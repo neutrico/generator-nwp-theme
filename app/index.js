@@ -47,4 +47,5 @@ NwpThemeGenerator.prototype.app = function app() {
 NwpThemeGenerator.prototype.projectfiles = function projectfiles() {
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
+  this.copy('gitignore', '.gitignore');
 };

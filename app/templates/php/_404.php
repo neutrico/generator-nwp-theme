@@ -15,5 +15,6 @@
  */
 
 get_header();
+get_template_part( 'main' );
 get_sidebar();
 get_footer();

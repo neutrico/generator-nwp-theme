@@ -21,3 +21,5 @@ bower_components
 composer.lock
 
 .sass-cache
+
+pkg

@@ -1,5 +1,8 @@
 {
     "name": "<%= _.slugify(themeName) %>",
     "version": "",
-    "dependencies": {}
+    "dependencies": {
+	"bootstrap": "3.0.2",
+	"font-awesome": "4.0.3"
+    }
 }

@@ -1,4 +1,4 @@
-/* jshint unused: false */
+/* jshint unused: false, camelcase: false */
 /* global module, grunt */
 
 'use strict';
@@ -13,13 +13,52 @@ module.exports = function (grunt) {
 	// load source package.json to get properties
 	pkg: grunt.file.readJSON('package.json'),
 
+	bower_depend: {
+	    options: {
+		copy: true
+	    },
+	    init:{
+		files: [{
+		    'expand': true,
+		    'cwd': 'bower_components/jquery/',
+		    'src': ['jquery.*js'],
+		    'dest': 'src/assets/js/vendor'
+		},{
+		    'expand': true,
+		    'cwd': 'bower_components/bootstrap/dist/js',
+		    'src': ['*.*js'],
+		    'dest': 'src/assets/js/vendor'
+		},{
+		    'expand': true,
+		    'cwd': 'bower_components/bootstrap/dist/css',
+		    'src': ['*.*'],
+		    'dest': 'src/assets/css'
+		},{
+		    'expand': true,
+		    'cwd': 'bower_components/bootstrap/dist/fonts',
+		    'src': ['*.*'],
+		    'dest': 'src/assets/fonts'
+		},{
+		    'expand': true,
+		    'cwd': 'bower_components/font-awesome/css',
+		    'src': ['*.*'],
+		    'dest': 'src/assets/css'
+		},{
+		    'expand': true,
+		    'cwd': 'bower_components/font-awesome/fonts',
+		    'src': ['*.*'],
+		    'dest': 'src/assets/fonts'
+		}]
+	    }
+	},
+
 	/**
 	 * Clean
 	 *
 	 * remove generated files
 	 *
 	 */
-	clean: [ '<%= pkg.directories.pkg %>' ],
+	clean: [ '<%= pkg.directories.pkg %>', 'bower_components', 'src/assets/js/vendor' ],
 
 	/**
 	 * Compass
@@ -102,6 +141,7 @@ module.exports = function (grunt) {
      */
     grunt.registerTask('initialize', [
 	'clean',
+	'bower_depend:init'
 	// 'concurrent:initialize'
     ]);
 

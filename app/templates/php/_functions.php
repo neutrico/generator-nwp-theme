@@ -6,12 +6,12 @@
  *
  * @category   Theme
  *
- * @package    WordPress
+ * @package	   WordPress
  * @subpackage <%= themeName %>
  *
- * @author     <%= authorName %> <<%= authorEmail %>>
- * @license    http://wordpress.org/about/gpl/ GPL-2.0
- * @link       <%= themeURI %>
+ * @author	   <%= authorName %> <<%= authorEmail %>>
+ * @license	   http://wordpress.org/about/gpl/ GPL-2.0
+ * @link	   <%= themeURI %>
  */
 
 if ( ! isset( $content_width ) ) {
@@ -41,8 +41,32 @@ load_theme_textdomain(
  */
 function setup_theme()
 {
+	$custom_header_args = array(
+		'default-image' => $settings['default_header_image'],
+		'random-default' => false,
+		'default-text-color' => $settings['default_header_text_color'],
+		'header-text' => $settings['default_header_text'],
+		'uploads' => true,
+	);
 
+	add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'custom-background' );
+	add_theme_support( 'custom-header', $custom_header_args );
 }
 
-add_action( 'tgmpa_register', 'neutrico_theme_register_required_plugins' );
+function theme_register_required_plugins() {
+	$plugins = array(
+		array(
+			'name' => 'Captcha',
+			'slug' => 'captcha',
+			'required' => true,
+		),
+	);
+
+	$config = array();
+
+	tgmpa( $plugins, $config );
+}
+
+add_action( 'tgmpa_register', 'theme_register_required_plugins' );
 add_action( 'after_setup_theme', 'setup_theme' );

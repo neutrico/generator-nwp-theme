@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages
+ * The main template file
  *
  * PHP version 5
  *
@@ -17,7 +17,5 @@
 
 global $theme;
 
-get_header();
-get_template_part( 'main' );
-get_sidebar();
-get_footer();
+get_sidebar( 'aside' );
+get_sidebar( 'footer' );

@@ -68,8 +68,8 @@ module.exports = function (grunt) {
 	 */
 	compass: {
 	    options: {
-		sassDir: '<%= pkg.config.dir.src %>/scss',
-		cssDir: '<%= pkg.config.dir.theme + "/" + pkg.config.slug %>/assets/css',
+		sassDir: 'src/assets/scss',
+		cssDir: 'src/assets/css',
 		relativeAssets: false,
 		outputStyle: 'expanded',
 		force: true
@@ -89,6 +89,33 @@ module.exports = function (grunt) {
 		}
 	    }
 	},
+
+	/**
+	 * Concurrent
+	 *
+	 * run time consuming tasks concurrently
+	 *
+	 */
+	concurrent: {
+	    compile: [
+		'compass:compile'// ,
+		// 'coffee:compile'
+	    ],
+	    initialize: [
+		'replace:initialize',
+		'copy:javascript',
+		'copy:resources',
+		'copy:vendor'
+	    ],
+	    pkg: [
+		'phpdocumentor:pkg',
+		'cssmin:pkg',
+		'imagemin:pkg',
+		'svgmin:pkg',
+		'uglify:pkg'
+	    ]
+	},
+
 
 	/**
 	 * Open
@@ -153,7 +180,7 @@ module.exports = function (grunt) {
      */
     grunt.registerTask('compile', [
 	'initialize',
-	// 'concurrent:compile',
+	'concurrent:compile',
 	// 'sync:watch'
     ]);
 

@@ -96,9 +96,11 @@ NwpThemeGenerator.prototype.app = function app() {
     this.copy('_Gruntfile.js', 'Gruntfile.js');
 
     // Theme files
-    this.template('assets/_style.css', 'src/style.css');
-    this.template('assets/_editor-style.css', 'src/editor-style.css');
-    this.template('assets/_rtl.css', 'src/rtl.css');
+    this.template('assets/css/_style.css', 'src/style.css');
+    this.template('assets/css/_editor-style.css', 'src/editor-style.css');
+    this.template('assets/css/_rtl.css', 'src/rtl.css');
+
+    this.template('assets/scss/_screen.scss', 'src/assets/scss/screen.scss');
 
     this.template('php/_404.php', 'src/404.php');
     this.template('php/_archive.php', 'src/archive.php');
@@ -111,6 +113,7 @@ NwpThemeGenerator.prototype.app = function app() {
     this.template('php/_header.php', 'src/header.php');
     this.template('php/_image.php', 'src/image.php');
     this.template('php/_index.php', 'src/index.php');
+    this.template('php/_main.php', 'src/main.php');
     this.template('php/_page.php', 'src/page.php');
     this.template('php/_search.php', 'src/search.php');
     this.template('php/_sidebar.php', 'src/sidebar.php');

@@ -14,6 +14,44 @@ module.exports = function (grunt) {
 	pkg: grunt.file.readJSON('package.json'),
 
 	/**
+	 * Clean
+	 *
+	 * remove generated files
+	 *
+	 */
+	clean: [ '<%= pkg.directories.pkg %>' ],
+
+	/**
+	 * Compass
+	 *
+	 * compile scss to css
+	 *
+	 */
+	compass: {
+	    options: {
+		sassDir: '<%= pkg.config.dir.src %>/scss',
+		cssDir: '<%= pkg.config.dir.theme + "/" + pkg.config.slug %>/assets/css',
+		relativeAssets: false,
+		outputStyle: 'expanded',
+		force: true
+	    },
+
+	    // on compile keep line_comments on
+	    compile: {
+		options: {
+		    environment: 'development'
+		}
+	    },
+
+	    // on deploy remove line_comments
+	    pkg: {
+		options: {
+		    environment: 'production'
+		}
+	    }
+	},
+
+	/**
 	 * Open
 	 *
 	 * open url in browser
@@ -55,12 +93,37 @@ module.exports = function (grunt) {
 
     });
 
+    /**
+     * Build lifecycle tasks
+     *
+     *
+     * Initialize
+     *
+     */
+    grunt.registerTask('initialize', [
+	'clean',
+	// 'concurrent:initialize'
+    ]);
+
+    /**
+     * Compile
+     *
+     * compile source code and sync with sandbox server
+     * run compile as default task on the fly with watch
+     */
+    grunt.registerTask('compile', [
+	'initialize',
+	// 'concurrent:compile',
+	// 'sync:watch'
+    ]);
 
     // on default task build sandbox version and wait for changes
     grunt.registerTask('default', [
+
+	// 'sync:sandbox',
+	'compile',
 	'open',
-	'sync:sandbox',
-	// 'compile',
-	'watch'
+	// 'watch'
+
     ]);
 };

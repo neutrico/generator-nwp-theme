@@ -92,7 +92,8 @@ NwpThemeGenerator.prototype.app = function app() {
 
     // this.template('bowerrc', '.bowerrc');
 
-    this.template('_Gruntfile.js', 'Gruntfile.js');
+    // this.template('_Gruntfile.js', 'Gruntfile.js');
+    this.copy('_Gruntfile.js', 'Gruntfile.js');
 
     // Theme files
     this.template('assets/_style.css', 'src/style.css');

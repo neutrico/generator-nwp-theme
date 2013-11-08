@@ -1,5 +1,66 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+    "name": "<%= _.slugify(themeName) %>",
+    "version": "0.0.0",
+    "description": "<%= themeDescription %>",
+    "keywords": [
+	"theme", "php"
+    ],
+    "homepage": "<%= themeURI %>",
+    "bugs" : {
+	"url": "http://",
+	"email": "@"
+    },
+    "author": {
+	"name": "<%= authorName %>",
+	"email": "<%= authorEmail %>",
+	"url": "<%= authorURI %>"
+    },
+    "repository": {
+	"type": "git",
+	"url": "http://"
+    },
+    "licenses": [
+	{
+	    "type": "License",
+	    "url": "http://"
+	}
+    ],
+    "maintainers": [
+	{
+	    "name": "Bill Smith",
+	    "email": "bills@example.com",
+	    "web": "http://www.example.com"
+	}
+    ],
+    "contributors": [
+	{
+	    "name": "",
+	    "email": "@",
+	    "web": "http://"
+	}
+    ],
+    "directories": {
+	"doc": "/doc"
+    },
+
+    "scripts": {
+
+    },
+    "config" : {
+
+    },
+    "dependencies": {},
+    "devDependencies": {},
+    "bundledDependencies": {},
+    "optionalDependencies": {},
+    "engines" :
+    {
+	"node" : ">=0.10.3 <0.12"
+    },
+    "engineStrict": false,
+    "os": "*",
+    "cpu": "*",
+    "preferGlobal": false,
+    "private": true,
+    "publishConfig": {}
 }

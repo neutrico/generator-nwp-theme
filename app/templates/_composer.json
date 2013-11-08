@@ -1,0 +1,14 @@
+{
+	"config": {
+		"vendor-dir": "src/vendor"
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/thomasgriffin/TGM-Plugin-Activation"
+		}
+	],
+	"require": {
+		"tgm/plugin-activation": "@dev"
+	}
+}

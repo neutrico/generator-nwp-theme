@@ -1,5 +1,5 @@
-/* jshint undef: true, unused: false, indent: 4 */
-/* global grunt */
+/* jshint unused: false */
+/* global module, grunt */
 
 'use strict';
 
@@ -59,8 +59,8 @@ module.exports = function (grunt) {
     // on default task build sandbox version and wait for changes
     grunt.registerTask('default', [
 	'open',
-	'sync:sandbox'
+	'sync:sandbox',
 	// 'compile',
-	// 'watch'
+	'watch'
     ]);
 };
